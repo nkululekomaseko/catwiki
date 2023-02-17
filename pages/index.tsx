@@ -1,7 +1,15 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { Box, ThemeIcon } from "@mantine/core";
+import {
+  Box,
+  Flex,
+  Grid,
+  Stack,
+  Text,
+  TextInput,
+  ThemeIcon,
+} from "@mantine/core";
 import CatwikiLogo from "../components/CatWikiLogo";
 
 const Home: NextPage = () => {
@@ -14,6 +22,48 @@ const Home: NextPage = () => {
       </Head>
       <Box>
         <CatwikiLogo width="100" height="35" color="#291507" />
+        <Box sx={{ height: "1000px" }}>
+          <Box
+            sx={{
+              width: "100%",
+              height: "50%",
+              backgroundImage: `url('./images/HeroImagelg.png')`,
+              backgroundSize: "100% 100%",
+              backgroundPosition: "center",
+              color: "white",
+            }}
+          >
+            <Grid sx={{ height: "100%" }}>
+              <Grid.Col span={6}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "100%",
+                  }}
+                >
+                  <Stack sx={{ width: "300px" }}>
+                    <CatwikiLogo width="240" height="90" color="#ffffff" />
+                    <Text
+                      sx={{
+                        fontSize: "24px",
+                        fontWeight: 500,
+                      }}
+                    >
+                      Get to know more about your cat breed
+                    </Text>
+                    <TextInput
+                      type="search"
+                      placeholder="Enter you breed"
+                      radius="lg"
+                    />
+                  </Stack>
+                </Box>
+              </Grid.Col>
+            </Grid>
+          </Box>
+        </Box>
       </Box>
     </Box>
   );
