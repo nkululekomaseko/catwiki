@@ -3,6 +3,8 @@ import Head from "next/head";
 import Image from "next/image";
 import {
   Box,
+  Button,
+  Divider,
   Flex,
   Grid,
   Stack,
@@ -11,6 +13,7 @@ import {
   ThemeIcon,
 } from "@mantine/core";
 import CatwikiLogo from "../components/CatWikiLogo";
+import { BsArrowRight } from "react-icons/bs";
 
 const Home: NextPage = () => {
   return (
@@ -22,7 +25,12 @@ const Home: NextPage = () => {
       </Head>
       <Box>
         <CatwikiLogo width="100" height="35" color="#291507" />
-        <Box sx={{ height: "1000px" }}>
+        <Box
+          sx={{
+            height: "1000px",
+            borderRadius: "24px",
+          }}
+        >
           <Box
             sx={{
               width: "100%",
@@ -31,6 +39,8 @@ const Home: NextPage = () => {
               backgroundSize: "100% 100%",
               backgroundPosition: "center",
               color: "white",
+              borderTopLeftRadius: "24px",
+              borderTopRightRadius: "24px",
             }}
           >
             <Grid sx={{ height: "100%" }}>
@@ -62,6 +72,66 @@ const Home: NextPage = () => {
                 </Box>
               </Grid.Col>
             </Grid>
+          </Box>
+          <Box
+            sx={{
+              backgroundColor: "#E3E1DC",
+              width: "100%",
+              height: "50%",
+              borderBottomLeftRadius: "24px",
+              borderBottomRightRadius: "24px",
+            }}
+          >
+            <Box sx={{ padding: "50px 100px" }}>
+              <Box>
+                <Text
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: "500",
+                    color: "#291507",
+                  }}
+                >
+                  Most Searched Breeds
+                </Text>
+                <Divider
+                  size="md"
+                  color="#4D270C"
+                  sx={{
+                    width: "60px",
+                  }}
+                />
+                <Flex
+                  justify="space-between"
+                  align="end"
+                  sx={{ paddingTop: "36px" }}
+                >
+                  <Text
+                    style={{
+                      fontSize: "48px",
+                      fontWeight: 700,
+                      lineHeight: "60px",
+                      color: "#291507",
+                      width: "60%",
+                    }}
+                  >
+                    66+ Breeds For you to discover
+                  </Text>
+                  <Button
+                    variant="subtle"
+                    rightIcon={<BsArrowRight />}
+                    sx={{
+                      color: "#2915079A",
+                      ":hover": {
+                        color: "#291507",
+                        backgroundColor: "inherit",
+                      },
+                    }}
+                  >
+                    SEE MORE
+                  </Button>
+                </Flex>
+              </Box>
+            </Box>
           </Box>
         </Box>
       </Box>
