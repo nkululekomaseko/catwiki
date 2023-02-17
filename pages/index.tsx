@@ -28,7 +28,6 @@ const Home: NextPage = () => {
         <CatwikiLogo width="100" height="35" color="#291507" />
         <Box
           sx={{
-            height: "1000px",
             borderRadius: "24px",
             marginTop: "24px",
           }}
@@ -36,13 +35,22 @@ const Home: NextPage = () => {
           <Box
             sx={{
               width: "100%",
-              height: "50%",
+              height: "500px",
               backgroundImage: `url('./images/HeroImagelg.png')`,
               backgroundSize: "100% 100%",
               backgroundPosition: "center",
               color: "white",
               borderTopLeftRadius: "24px",
               borderTopRightRadius: "24px",
+              "@media (max-width: 1000px)": {
+                height: "400px",
+              },
+              "@media (max-width: 700px)": {
+                height: "300px",
+              },
+              "@media (max-width: 500px)": {
+                height: "200px",
+              },
             }}
           >
             <Grid sx={{ height: "100%" }}>
@@ -61,6 +69,7 @@ const Home: NextPage = () => {
                       sx={{
                         fontSize: "24px",
                         fontWeight: 500,
+                        fontFamily: "Montserrat",
                       }}
                     >
                       Get to know more about your cat breed
@@ -90,6 +99,7 @@ const Home: NextPage = () => {
                   style={{
                     fontSize: "18px",
                     fontWeight: "500",
+                    fontFamily: "Montserrat",
                     color: "#291507",
                   }}
                 >
@@ -111,6 +121,7 @@ const Home: NextPage = () => {
                     style={{
                       fontSize: "48px",
                       fontWeight: 700,
+                      fontFamily: "Montserrat",
                       lineHeight: "60px",
                       color: "#291507",
                       width: "60%",
