@@ -14,6 +14,7 @@ import {
 } from "@mantine/core";
 import CatwikiLogo from "../components/CatWikiLogo";
 import { BsArrowRight } from "react-icons/bs";
+import MostSearchedImages from "../components/MostSearchedImages";
 
 const Home: NextPage = () => {
   return (
@@ -29,6 +30,7 @@ const Home: NextPage = () => {
           sx={{
             height: "1000px",
             borderRadius: "24px",
+            marginTop: "24px",
           }}
         >
           <Box
@@ -48,9 +50,9 @@ const Home: NextPage = () => {
                 <Box
                   sx={{
                     display: "flex",
-                    justifyContent: "center",
                     alignItems: "center",
                     height: "100%",
+                    marginLeft: "100px",
                   }}
                 >
                   <Stack sx={{ width: "300px" }}>
@@ -103,7 +105,7 @@ const Home: NextPage = () => {
                 <Flex
                   justify="space-between"
                   align="end"
-                  sx={{ paddingTop: "36px" }}
+                  sx={{ marginTop: "36px" }}
                 >
                   <Text
                     style={{
@@ -130,6 +132,7 @@ const Home: NextPage = () => {
                     SEE MORE
                   </Button>
                 </Flex>
+                <MostSearchedImages />
               </Box>
             </Box>
           </Box>
