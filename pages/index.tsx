@@ -7,6 +7,7 @@ import {
   Divider,
   Flex,
   Grid,
+  SimpleGrid,
   Stack,
   Text,
   TextInput,
@@ -147,6 +148,68 @@ const Home: NextPage = () => {
               </Box>
             </Box>
           </Box>
+        </Box>
+        <Box>
+          <SimpleGrid cols={2} breakpoints={[{ maxWidth: 1300, cols: 1 }]}>
+            <Flex justify="center" align="center">
+              <Box
+                sx={{
+                  padding: "100px",
+                }}
+              >
+                <Stack align="flex-start" spacing={48}>
+                  <Box>
+                    <Divider
+                      size="md"
+                      color="#4D270C"
+                      sx={{
+                        width: "60px",
+                        marginBottom: "24px",
+                      }}
+                    />
+                    <Text
+                      style={{
+                        fontSize: "48px",
+                        fontWeight: 700,
+                        fontFamily: "Montserrat",
+                        lineHeight: "60px",
+                        color: "#291507",
+                      }}
+                    >
+                      Why should you have a cat?
+                    </Text>
+                  </Box>
+                  <Text
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: 500,
+                      fontFamily: "Montserrat",
+                      lineHeight: "22px",
+                      color: "#291507",
+                    }}
+                  >
+                    Having a cat around you can actually trigger the release of
+                    calming chemicals in your body which lower your stress and
+                    anxiety leves
+                  </Text>
+                  <Button
+                    variant="subtle"
+                    rightIcon={<BsArrowRight />}
+                    sx={{
+                      color: "#2915079A",
+                      padding: 0,
+                      ":hover": {
+                        color: "#291507",
+                        backgroundColor: "inherit",
+                      },
+                    }}
+                  >
+                    READ MORE
+                  </Button>
+                </Stack>
+              </Box>
+            </Flex>
+          </SimpleGrid>
         </Box>
       </Box>
     </Box>
