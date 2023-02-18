@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
+// import Image from "next/image";
 import {
   Box,
   Button,
@@ -11,11 +11,12 @@ import {
   Stack,
   Text,
   TextInput,
-  ThemeIcon,
+  Image,
 } from "@mantine/core";
 import CatwikiLogo from "../components/CatWikiLogo";
 import { BsArrowRight } from "react-icons/bs";
 import MostSearchedImages from "../components/MostSearchedImages";
+import { relative } from "path";
 
 const Home: NextPage = () => {
   return (
@@ -150,13 +151,13 @@ const Home: NextPage = () => {
           </Box>
         </Box>
         <Box>
-          <SimpleGrid cols={2} breakpoints={[{ maxWidth: 1300, cols: 1 }]}>
+          <SimpleGrid
+            cols={2}
+            breakpoints={[{ maxWidth: 1300, cols: 1 }]}
+            sx={{ padding: "100px" }}
+          >
             <Flex justify="center" align="center">
-              <Box
-                sx={{
-                  padding: "100px",
-                }}
-              >
+              <Box>
                 <Stack align="flex-start" spacing={48}>
                   <Box>
                     <Divider
@@ -209,6 +210,54 @@ const Home: NextPage = () => {
                 </Stack>
               </Box>
             </Flex>
+            <Box>
+              <Box
+                sx={{
+                  float: "left",
+                  width: "50%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-end",
+                }}
+              >
+                <Image
+                  src="/images/cat_2.png"
+                  alt="cat_2"
+                  style={{
+                    objectFit: "cover",
+                    width: "270px",
+                    height: "167px",
+                    padding: "10px",
+                  }}
+                />
+                <Image
+                  src="/images/cat_1.png"
+                  alt="cat_1"
+                  style={{
+                    objectFit: "cover",
+                    padding: "10px",
+                    width: "195px",
+                    height: "293px",
+                  }}
+                />
+              </Box>
+              <Box
+                sx={{
+                  float: "left",
+                  width: "50%",
+                }}
+              >
+                <Image
+                  src="/images/cat_3.png"
+                  alt="cat_3"
+                  style={{
+                    padding: "10px",
+                    width: "238px",
+                    height: "385px",
+                  }}
+                />
+              </Box>
+            </Box>
           </SimpleGrid>
         </Box>
       </Box>
