@@ -6,6 +6,7 @@ import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { fetchBreed, useBreed } from "../hooks/useBreed";
 import CatBreedInfo from "../components/CatBreedInfo";
 import CatBreedOtherImages from "../components/CatBreedOtherImages";
+import Footer from "../components/Footer";
 
 const Breed = ({}) => {
   const router = useRouter();
@@ -37,6 +38,7 @@ const Breed = ({}) => {
           </Grid.Col>
         </Grid>
         <CatBreedOtherImages urls={data.slice(1).map((cat) => cat.url)} />
+        <Footer />
       </Box>
     </>
   );

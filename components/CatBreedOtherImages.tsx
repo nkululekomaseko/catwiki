@@ -1,8 +1,16 @@
-import { AspectRatio, Box, Flex, Image, SimpleGrid, Text } from "@mantine/core";
+import {
+  AspectRatio,
+  Box,
+  Flex,
+  Grid,
+  Image,
+  SimpleGrid,
+  Text,
+} from "@mantine/core";
 
 const CatBreedOtherImages = (props: { urls: Array<string> }) => {
   return (
-    <Box>
+    <Box sx={{ margin: "20px 0" }}>
       <Text
         sx={{
           fontSize: "36px",
@@ -15,27 +23,20 @@ const CatBreedOtherImages = (props: { urls: Array<string> }) => {
       >
         Other photos
       </Text>
-      <SimpleGrid
-        spacing="md"
-        cols={4}
-        breakpoints={[
-          { maxWidth: 1200, cols: 3 },
-          { maxWidth: 900, cols: 2 },
-          { maxWidth: 400, cols: 1 },
-        ]}
-      >
+      <Grid gutter="lg">
         {props.urls.map((url, index) => (
-          <Flex justify="center" key={index}>
+          <Grid.Col key={index} xs={12} sm={6} md={4} lg={3}>
             <Image
+              key={index}
               src={url}
               alt="Cat Image"
               radius="lg"
               width={280}
               height={280}
             />
-          </Flex>
+          </Grid.Col>
         ))}
-      </SimpleGrid>
+      </Grid>
     </Box>
   );
 };

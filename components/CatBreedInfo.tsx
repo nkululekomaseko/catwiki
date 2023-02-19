@@ -6,7 +6,7 @@ const CatBreedInfo = (props: { data: any }) => {
   const { data } = props;
 
   return (
-    <Stack spacing="lg">
+    <Stack spacing="lg" sx={{ margin: "0 20px" }}>
       <Text
         style={{
           fontSize: "36px",
