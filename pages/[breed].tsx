@@ -5,6 +5,7 @@ import { GetServerSideProps } from "next";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { fetchBreed, useBreed } from "../hooks/useBreed";
 import CatBreedInfo from "../components/CatBreedInfo";
+import CatBreedOtherImages from "../components/CatBreedOtherImages";
 
 const Breed = ({}) => {
   const router = useRouter();
@@ -12,7 +13,7 @@ const Breed = ({}) => {
 
   const { data, isLoading, isFetching } = useBreed({
     breedIds: breed as string,
-    limit: 10,
+    limit: 9,
   });
 
   if (isLoading) return <Box>Is Loading</Box>;
@@ -24,14 +25,18 @@ const Breed = ({}) => {
         <Grid>
           <Grid.Col xs={12} sm={4}>
             <Flex justify="center" align="end" sx={{ padding: "0 36px" }}>
-              <Image src={data[0].url} alt="cat_1" radius="lg" />
+              <Image
+                src={data[0].url}
+                alt={data[0].breeds[0].name}
+                radius="lg"
+              />
             </Flex>
           </Grid.Col>
           <Grid.Col xs={12} sm={8}>
             <CatBreedInfo data={data[0].breeds[0]} />
-            {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
           </Grid.Col>
         </Grid>
+        <CatBreedOtherImages urls={data.slice(1).map((cat) => cat.url)} />
       </Box>
     </>
   );
@@ -43,7 +48,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   await queryClient.prefetchQuery({
     queryKey: ["breed", breed],
-    queryFn: () => fetchBreed({ breedIds: breed as string, limit: 10 }),
+    queryFn: () => fetchBreed({ breedIds: breed as string, limit: 9 }),
   });
 
   return {
