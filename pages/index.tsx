@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import {
   Box,
   Button,
@@ -10,13 +10,35 @@ import {
   Text,
   TextInput,
   Image,
+  Select,
+  Autocomplete,
+  AutocompleteItem,
 } from "@mantine/core";
 import CatwikiLogo from "../components/CatWikiLogo";
 import { BsArrowRight } from "react-icons/bs";
 import MostSearchedImages from "../components/MostSearchedImages";
 import Footer from "../components/Footer";
+import { dehydrate, QueryClient } from "@tanstack/react-query";
+import { fetchBreeds, useBreedList } from "../hooks/useBreedList";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
+  const { data: breedList, isLoading, isFetching } = useBreedList();
+  const [selectedBreed, setSelectedBreed] = useState<string>("");
+  const router = useRouter();
+
+  useEffect(() => {
+    // console.log(JSON.stringify(data, null, 2));
+    console.log("Data length", breedList.length);
+  }, [breedList]);
+
+  const handleBreedClick = (item: AutocompleteItem) => {
+    router.push(`/${item.breedid}`);
+    // console.log("Item", JSON.stringify(item, null, 2));
+    // setSelectedBreed(event.target);
+  };
+
   return (
     <Box sx={{ maxWidth: "100%", margin: "1% 3% 0 3%" }}>
       <Box>
@@ -69,10 +91,26 @@ const Home: NextPage = () => {
                     >
                       Get to know more about your cat breed
                     </Text>
-                    <TextInput
-                      type="search"
+                    <Autocomplete
                       placeholder="Enter you breed"
+                      data={breedList.map((breed) => {
+                        return {
+                          value: breed.name,
+                          breedid: breed.id,
+                        };
+                      })}
+                      value={selectedBreed}
+                      onChange={setSelectedBreed}
+                      onItemSubmit={handleBreedClick}
+                      maxDropdownHeight={200}
+                      limit={100}
                       radius="lg"
+                      size="lg"
+                      sx={{
+                        ".mantine-Autocomplete-dropdown": {
+                          borderRadius: "24px",
+                        },
+                      }}
                     />
                   </Stack>
                 </Box>
@@ -257,6 +295,21 @@ const Home: NextPage = () => {
       </Box>
     </Box>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey: ["breeds"],
+    queryFn: () => fetchBreeds(),
+  });
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
 };
 
 export default Home;
