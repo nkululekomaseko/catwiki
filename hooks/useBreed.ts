@@ -22,5 +22,6 @@ export const useBreed = (props: { breedIds: string; limit: number }) => {
   return useQuery({
     queryKey: ["breed", props.breedIds],
     queryFn: () => fetchBreed(props),
+    refetchOnMount: false,
   });
 };

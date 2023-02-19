@@ -1,9 +1,10 @@
-import { Box, Grid, Text } from "@mantine/core";
+import { Box, Flex, Grid, Image, Text } from "@mantine/core";
 import { useRouter } from "next/router";
 import CatwikiLogo from "../components/CatWikiLogo";
 import { GetServerSideProps } from "next";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { fetchBreed, useBreed } from "../hooks/useBreed";
+import CatBreedInfo from "../components/CatBreedInfo";
 
 const Breed = ({}) => {
   const router = useRouter();
@@ -21,9 +22,14 @@ const Breed = ({}) => {
       <Box sx={{ maxWidth: "100%", margin: "1% 3% 0 3%" }}>
         <CatwikiLogo width="100" height="35" color="#291507" />
         <Grid>
-          <Grid.Col span={4}></Grid.Col>
-          <Grid.Col span={8}>
-            <pre>{JSON.stringify(data, null, 2)}</pre>
+          <Grid.Col xs={12} sm={4}>
+            <Flex justify="center" align="end" sx={{ padding: "0 36px" }}>
+              <Image src={data[0].url} alt="cat_1" radius="lg" />
+            </Flex>
+          </Grid.Col>
+          <Grid.Col xs={12} sm={8}>
+            <CatBreedInfo data={data[0].breeds[0]} />
+            {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
           </Grid.Col>
         </Grid>
       </Box>
